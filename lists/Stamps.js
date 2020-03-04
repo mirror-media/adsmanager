@@ -1,5 +1,5 @@
 const { access } = require('./Permission.js');                                                                                                                      
-const { Text, Select } = require('@keystonejs/fields');                                                                                                           
+const { Text, Select, Integer } = require('@keystonejs/fields');                                                                                                           
                                                                                                                                                                     
 module.exports = {                                                                                                                                                  
   fields: {                                                                                                                                                         

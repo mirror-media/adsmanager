@@ -4,8 +4,8 @@ const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/f
 module.exports = {                                                                                                                                                  
   fields: {                                                                                                                                                         
     adname: { label: "廣告名稱", type: Text, isRequired: true},
-    clientname: { label: "客戶ID", type: Relationship, many: false, red: 'Client',  isRequired: true},
-    username: { label: "使用者ID", type: Relationship, many: false, red: 'user',  isRequired: true},
+    clientname: { label: "客戶ID", type: Relationship, many: false, ref: 'Client',  isRequired: true},
+    username: { label: "使用者ID", type: Relationship, many: false, ref: 'User',  isRequired: true},
     start_date: { label: "開始日期", type: DateTime, yearRangeFrom: 2015, yearRangeTo: 2022, yearPickerType: 'auto', isRequired: true},
     end_date: { label: "結束日期", type: DateTime, yearRangeFrom: 2015, yearRangeTo: 2022, yearPickerType: 'auto', isRequired: true},
     period: { label: "期數／天數", type: Integer, isRequired: false},

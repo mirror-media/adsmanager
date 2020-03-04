@@ -1,8 +1,10 @@
-const { access } = require('./Permission.js');                                                                                                                      
-const { Text, Checkbox } = require('@keystonejs/fields');                                                                                                           
-                                                                                                                                                                    
-module.exports = {                                                                                                                                                  
-  fields: {                                                                                                                                                         
+const { access } = require('./Permission.js');
+const { Text, Checkbox } = require('@keystonejs/fields');
+const { atTracking } = require('@keystonejs/list-plugins');
+const { byTracking } = require('@keystonejs/list-plugins');
+
+module.exports = { 
+  fields: {
     name: { label: "客戶名稱", type: Text, isRequired: true},
     resale: { label: "代理商名稱", type: Text, isRequired: true},
     inv_title: { label: "發票抬頭", type: Text, isRequired: true},
@@ -13,12 +15,22 @@ module.exports = {
     contact: { label: "聯絡人姓名", type: Text, isRequired: true},
     contact_email: { label: "聯絡人 Email", type: Text, isRequired: true},
     contact_tel: { label: "聯絡人電話", type: Text, isRequired: true},
-  },                                                                                                                                                                
-  access: {                                                                                                                                                         
-    read: access.everyone,                                                                                                                                          
-    update: access.userIsUsers,                                                                                                                                     
-    create: access.userIsAdmin,                                                                                                                                     
-    delete: access.userIsAdmin,                                                                                                                                     
-    auth: true,                                                                                                                                                     
-  },                                                                                                                                                                
+  },
+  access: {
+    read: access.everyone,
+    update: access.userIsUsers,
+    create: access.userIsAdmin,
+    delete: access.userIsAdmin,
+    auth: true,
+  },
+  plugins: {
+    atTracking({
+      createdAtField: "createdAt",
+      updatedAtField: "updatedAt",
+      format: "YYYY/MM/DD h:mm A",
+    }),
+	byTracking({
+      ref: "User",
+    }),
+  }
 };

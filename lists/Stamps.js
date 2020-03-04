@@ -1,5 +1,7 @@
-const { access } = require('./Permission.js');                                                                                                                      
-const { Text, Select, Integer } = require('@keystonejs/fields');                                                                                                           
+const { access } = require('./Permission.js');
+const { Text, Select, Integer } = require('@keystonejs/fields');
+const { atTracking } = require('@keystonejs/list-plugins');
+const { byTracking } = require('@keystonejs/list-plugins');
 
 const platform_options = [
   { value: 'desktop', label: "桌機廣告" },
@@ -24,8 +26,8 @@ const section_options = [
   { value: 'culture', label: "文化" },
   { value: 'watch', label: "汽車鐘錶" },
 ];
-module.exports = {                                                                                                                                                  
-  fields: {                                                                                                                                                         
+module.exports = { 
+  fields: {
     platform: { label: '平台', type: Select, platform_options, isRequired: true, default: '跨裝置廣告' },
     section: { label: '頻道分區', type: Select, section_options, isRequired: true, default: '不指定' },
     category: { label: "頻道分類", type: Text, isRequired: true},
@@ -34,12 +36,22 @@ module.exports = {
     spec: { label: "素材尺寸規格", type: Text, isRequired: true},
     charge: { label: "計價方式", type: Text, isRequired: true},
     price: { label: "售價金額", type: Integer, isRequired: true},
-  },                                                                                                                                                                
-  access: {                                                                                                                                                         
-    read: access.everyone,                                                                                                                                          
-    update: access.userIsUsers,                                                                                                                                     
-    create: access.userIsAdmin,                                                                                                                                     
-    delete: access.userIsAdmin,                                                                                                                                     
-    auth: true,                                                                                                                                                     
-  },                                                                                                                                                                
+  },
+  plugins: {
+    atTracking({
+      createdAtField: "createdAt",
+      updatedAtField: "updatedAt",
+      format: "YYYY/MM/DD h:mm A",
+    }),
+	byTracking({
+      ref: "User",
+    }),
+  },
+  access: {
+    read: access.everyone,
+    update: access.userIsUsers,
+    create: access.userIsAdmin,
+    delete: access.userIsAdmin,
+    auth: true,
+  },
 };

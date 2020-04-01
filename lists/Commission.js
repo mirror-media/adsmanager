@@ -3,9 +3,9 @@ const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/f
  
 module.exports = {
   fields: {
-    amount: { label: "總金額", type: integer, yearPickerType: 'auto', isRequired: true},
-	impression: { label: "手動曝光量", type: integer },
-	remaining: { label: "剩餘曝光量", type: integer },
+    amount: { label: "總金額", type: Integer, isRequired: true},
+	impression: { label: "手動曝光量", type: Integer },
+	remaining: { label: "剩餘曝光量", type: Integer },
   },
   access: {
     read: access.everyone,

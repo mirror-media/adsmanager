@@ -1,7 +1,5 @@
 const { access } = require('./Permission.js');
 const { Text, Select, Integer } = require('@keystonejs/fields');
-const { atTracking } = require('@keystonejs/list-plugins');
-const { byTracking } = require('@keystonejs/list-plugins');
 
 const platform_options = [
   { value: 'desktop', label: "桌機廣告" },
@@ -28,24 +26,14 @@ const section_options = [
 ];
 module.exports = { 
   fields: {
-    platform: { label: '平台', type: Select, platform_options, isRequired: true, default: '跨裝置廣告' },
-    section: { label: '頻道分區', type: Select, section_options, isRequired: true, default: '不指定' },
+    platform: { label: '平台', type: Select, options: platform_options, isRequired: true, default: '跨裝置廣告' },
+    section: { label: '頻道分區', type: Select, options: section_options, isRequired: true, default: '不指定' },
     category: { label: "頻道分類", type: Text, isRequired: true},
     stamp: { label: "版位", type: Text, isRequired: true},
     adname: { label: "廣告名稱", type: Text, isRequired: true},
     spec: { label: "素材尺寸規格", type: Text, isRequired: true},
     charge: { label: "計價方式", type: Text, isRequired: true},
     price: { label: "售價金額", type: Integer, isRequired: true},
-  },
-  plugins: {
-    atTracking({
-      createdAtField: "createdAt",
-      updatedAtField: "updatedAt",
-      format: "YYYY/MM/DD h:mm A",
-    }),
-	byTracking({
-      ref: "User",
-    }),
   },
   access: {
     read: access.everyone,

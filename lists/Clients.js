@@ -1,7 +1,5 @@
 const { access } = require('./Permission.js');
 const { Text, Checkbox } = require('@keystonejs/fields');
-const { atTracking } = require('@keystonejs/list-plugins');
-const { byTracking } = require('@keystonejs/list-plugins');
 
 module.exports = { 
   fields: {
@@ -23,14 +21,4 @@ module.exports = {
     delete: access.userIsAdmin,
     auth: true,
   },
-  plugins: {
-    atTracking({
-      createdAtField: "createdAt",
-      updatedAtField: "updatedAt",
-      format: "YYYY/MM/DD h:mm A",
-    }),
-	byTracking({
-      ref: "User",
-    }),
-  }
 };

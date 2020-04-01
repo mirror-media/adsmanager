@@ -1,7 +1,5 @@
 const { access } = require('./Permission.js');
 const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/fields');
-const { atTracking } = require('@keystonejs/list-plugins');
-const { byTracking } = require('@keystonejs/list-plugins');
  
 const options = [
   { value: 'start', label: "開始" },
@@ -24,14 +22,4 @@ module.exports = {
     delete: access.userIsAdmin,
     auth: true,
   },
-  plugins: {
-    atTracking({
-      createdAtField: "createdAt",
-      updatedAtField: "updatedAt",
-      format: "YYYY/MM/DD h:mm A",
-    }),
-	byTracking({
-      ref: "User",
-    }),
-  }
 };

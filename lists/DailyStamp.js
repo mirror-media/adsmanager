@@ -4,7 +4,6 @@ const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/f
 module.exports = {
   fields: {
     id: { type: Text, isRequired: true },
-	dailystamp: { label: "每日版位ID", type: Relationship, many: false, ref: 'DailyStamp',  isRequired: true},
     data_date: { label: "數據時間", type: DateTime, yearPickerType: 'auto', isRequired: true},
 	impression: { label: "手動曝光量", type: Integer },
 	remaining: { label: "剩餘曝光量", type: Integer },

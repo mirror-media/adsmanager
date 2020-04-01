@@ -3,6 +3,7 @@ const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/f
  
 module.exports = {
   fields: {
+	dailystamp: { label: "每日版位ID", type: Relationship, many: false, ref: 'DailyStamp',  isRequired: true},
     amount: { label: "總金額", type: Integer, isRequired: true},
 	impression: { label: "手動曝光量", type: Integer },
 	remaining: { label: "剩餘曝光量", type: Integer },

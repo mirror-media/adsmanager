@@ -4,9 +4,9 @@ const { Keystone } = require('@keystonejs/keystone');
 
 const updateamount = async (_, { dailystamp, order }) => {
   const dailyamount = keystone.lists.Dailystamp;
-  const currentItem = await list.adapter.findById(dailystamp);
-  const newItem = await list.adapter.update(dailyamount, {
-    ...oldItem,
+  const currentItem = await dailyamount.adapter.findById(dailystamp);
+  const newItem = await dailyamount.adapter.update(dailyamount, {
+    ...currentItem,
     remaining: (currnetItem.remaining || 0) - order,
   });
   return newItem;
@@ -19,6 +19,9 @@ module.exports = {
 		label: "預定量", 
 		type: Integer, 
 		isRequired: true,
+		hooks: {
+			afterChange: updateamount.
+		},
 	},
 	orderstatus: { label: "狀態", type: Text },
   },

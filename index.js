@@ -55,12 +55,6 @@ const authStrategy = keystone.createAuthStrategy({
 module.exports = {
   keystone,
   apps: [
-  type: PasswordAuthStrategy,
-  list: 'User',
-});
-module.exports = {
-  keystone,
-  apps: [
     new GraphQLApp(),
     new AdminUIApp({
       enableDefaultRoute: true,
@@ -129,6 +123,7 @@ keystone.createList('Commission', {
 					updated = await daily_model.adapter.update(daily_id, {
 						...currentRemaining,
 						remaining: remain, 
+					});
 				},
 			},
 		},

@@ -20,7 +20,7 @@ module.exports = {
 		type: Integer, 
 		isRequired: true,
 		hooks: {
-			afterChange: updateamount.
+			afterChange: updateamount,
 		},
 	},
 	orderstatus: { label: "狀態", type: Text },

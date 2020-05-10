@@ -1,6 +1,12 @@
 const { access } = require('./Permission.js');
 const { Text, Checkbox } = require('@keystonejs/fields');
 
+
+const status_options = [
+  { value: 'active', label: "active" },
+  { value: 'inactive', label: "inactive" },
+];
+
 module.exports = { 
   fields: {
     name: { label: "客戶名稱", type: Text, isRequired: true},
@@ -9,7 +15,8 @@ module.exports = {
     inv_number: { label: "發票統編", type: Text, isRequired: true},
     inv_address: { label: "發票地址", type: Text, isRequired: true},
     inv_receiver: { label: "發票收件人姓名", type: Text, isRequired: true},
-    inv_method: { label: "發票開立方式", type: Text, isRequired: true},
+    inv_method: { label: "發票開立方式", type: Text, isRequired: false},
+    client_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
     contact: { label: "聯絡人姓名", type: Text, isRequired: true},
     contact_email: { label: "聯絡人 Email", type: Text, isRequired: true},
     contact_tel: { label: "聯絡人電話", type: Text, isRequired: true},

@@ -1,6 +1,6 @@
 const { Keystone } = require('@keystonejs/keystone');
 const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
-const { Select, Text, Checkbox, Password, Relationship, Integer } = require('@keystonejs/fields');
+const { Select, Text, Checkbox, Password, Relationship, Integer, DateTime } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const initialiseData = require('./initial-data');

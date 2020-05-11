@@ -1,5 +1,5 @@
 const { access } = require('./Permission.js');
-const { Text, Select, Integer } = require('@keystonejs/fields');
+const { Text, Select, Integer, Float } = require('@keystonejs/fields');
 
 const status_options = [
   { value: 'active', label: "active" },
@@ -40,7 +40,7 @@ module.exports = {
     spec: { label: "素材尺寸規格", type: Text, isRequired: true},
     charge: { label: "計價方式", type: Text, isRequired: true},
 	estimate: {label: "預估曝光量", type: Integer, isRequired: false},
-	est_ctr: {label: "預估點擊率", type: float, isRequired: false},
+	est_ctr: {label: "預估點擊率", type: Float, isRequired: false},
     price: { label: "售價金額", type: Integer, isRequired: true},
     stamp_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
   },

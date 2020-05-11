@@ -1,5 +1,5 @@
 const { access } = require('./Permission.js');
-const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/fields');
+const { Select, Text, Relationship, DateTime, Integer, Float } = require('@keystonejs/fields');
 const { Keystone } = require('@keystonejs/keystone');
 
 const updateamount = async (_, { dailystamp, order }) => {

@@ -1,5 +1,5 @@
 const { access } = require('./Permission.js');
-const { Text, Checkbox } = require('@keystonejs/fields');
+const { Text, Select, Checkbox } = require('@keystonejs/fields');
 
 
 const status_options = [

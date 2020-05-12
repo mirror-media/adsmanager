@@ -3,6 +3,7 @@ const { PasswordAuthStrategy } = require('@keystonejs/auth-password');
 const { Select, Text, Checkbox, Password, Relationship, Integer, DateTime, Float } = require('@keystonejs/fields');
 const { GraphQLApp } = require('@keystonejs/app-graphql');
 const { AdminUIApp } = require('@keystonejs/app-admin-ui');
+const { atTracking } = require('@keystonejs/list-plugins');
 const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
 const PROJECT_NAME = "sales";
@@ -52,6 +53,13 @@ keystone.createList('User', {
     delete: access.userIsAdmin,
     auth: true,
   },
+  plugins: [
+	atTracking({
+	  createdAtField: "createAt",
+	  updatedAtField: "updateAt",
+	  format: "YYYY/MM/DD h:mm A",
+	}),
+  ],
 });
 const authStrategy = keystone.createAuthStrategy({
   type: PasswordAuthStrategy,
@@ -116,10 +124,14 @@ keystone.createList('Commission', {
 						currentRemaining = await daily_model.adapter.findById(daily_id); 
 						remain = currentRemaining.remaining - operation.originalInput.order;
 					}
-					updated = await daily_model.adapter.update(daily_id, {
-						...currentRemaining,
-						remaining: remain, 
-					});
+					if (remain > 0) {
+						updated = await daily_model.adapter.update(daily_id, {
+							...currentRemaining,
+							remaining: remain, 
+						});
+					} else if (remain < 0) {
+						operation.addFieldValidationError("數量不足");
+					}
 				},
 				afterDelete: async (operation, existingItem, context, actions) => {
 					const daily_model = keystone.lists.Dailystamp;
@@ -141,4 +153,11 @@ keystone.createList('Commission', {
 		charged: { label: "實收金額", type: Integer, isRequired: true },
 		remark: { label: "備註", type: Text },
 	},
+    plugins: [
+	  atTracking({
+	    createdAtField: "createAt",
+	    updatedAtField: "updateAt",
+	    format: "YYYY/MM/DD h:mm A",
+	  }),
+    ],
 });

@@ -1,6 +1,6 @@
 const { access } = require('./Permission.js');
 const { Text, Select, Checkbox } = require('@keystonejs/fields');
-
+const { atTracking } = require('@keystonejs/list-plugins');
 
 const status_options = [
   { value: 'active', label: "active" },
@@ -28,4 +28,11 @@ module.exports = {
     delete: access.userIsAdmin,
     auth: true,
   },
+  plugins: [
+	atTracking({
+	  createdAtField: "createAt",
+	  updatedAtField: "updateAt",
+	  format: "YYYY/MM/DD h:mm A",
+	}),
+  ],
 };

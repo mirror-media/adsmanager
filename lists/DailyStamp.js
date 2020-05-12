@@ -1,5 +1,6 @@
 const { access } = require('./Permission.js');
 const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/fields');
+const { atTracking } = require('@keystonejs/list-plugins');
  
 module.exports = {
   fields: {
@@ -17,5 +18,12 @@ module.exports = {
     delete: access.userIsAdmin,
     auth: true,
   },
+  plugins: [
+	atTracking({
+	  createdAtField: "createAt",
+	  updatedAtField: "updateAt",
+	  format: "YYYY/MM/DD h:mm A",
+	}),
+  ],
   labelField: 'dailyid',
 };

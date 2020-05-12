@@ -1,6 +1,7 @@
 const { access } = require('./Permission.js');
 const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/fields');
- 
+const { atTracking } = require('@keystonejs/list-plugins');
+
 const options = [
   { value: 'start', label: "開始" },
   { value: 'end', label: "結束" },
@@ -24,7 +25,16 @@ module.exports = {
     start_date: { label: "開始日期", type: DateTime, yearRangeFrom: 2020, yearRangeTo: 2022, yearPickerType: 'select', isRequired: true},
     end_date: { label: "結束日期", type: DateTime, yearRangeFrom: 2020, yearRangeTo: 2022, yearPickerType: 'select', isRequired: true},
     period: { label: "期數／天數", type: Integer, isRequired: false},
-    tax_free: { label: "總金額（未稅）", type: Integer, isRequired: false},
+    tax_free: { 
+		label: "總金額（未稅）", type: Integer, isRequired: false,
+		hooks: {
+			beforeChange: async (operation, existingItem, originalInput, updatedItem, context) => {
+				if (operation.resolvedData.tax_free > 0) {
+					operation.resolvedData.tax_included = operation.resolvedData.tax_free * 1.05;
+				}
+			}
+		}
+	}
     tax_included: { label: "總金額（含稅）", type: Integer, isRequired: false},
     adname: { label: "付款條件", type: Text, isRequired: false},
     remark: { label: "其他備註", type: Text, isRequired: false},
@@ -36,4 +46,11 @@ module.exports = {
     delete: access.userIsAdmin,
     auth: true,
   },
+  plugins: [
+	atTracking({
+	  createdAtField: "createAt",
+	  updatedAtField: "updateAt",
+	  format: "YYYY/MM/DD h:mm A",
+	}),
+  ],
 };

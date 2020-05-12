@@ -6,6 +6,7 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { atTracking } = require('@keystonejs/list-plugins');
 const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
+const { access } = require('./Permission.js');
 const PROJECT_NAME = "sales";
 const keystone = new Keystone({
   name: PROJECT_NAME,
@@ -30,7 +31,6 @@ const status_options = [
   { value: 'inactive', label: "inactive" },
 ];
 const everyone = ({ authentication: { item: user } }) => Boolean(user);
-const access = { userIsAdmin, userOwnsItem, userIsAdminOrOwner, everyone };
 keystone.createList('User', {
   fields: {
     name: { label: "姓名", type: Text, isRequired: true },

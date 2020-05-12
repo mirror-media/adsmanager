@@ -4,6 +4,6 @@ const userIsSales = ({ authentication: { item: user } }) => Boolean(user && (use
 const userIsExecutor = ({ authentication: { item: user } }) => Boolean(user && (user.role == 'executor' || user.role == 'sales' || user.isAdmin));
 const userIsPlanner = ({ authentication: { item: user } }) => Boolean(user && (user.role == 'planner' || user.role == 'executor' || user.role == 'sales' || user.isAdmin));
 const everyone = ({ authentication: { item: user } }) => Boolean(user);
-const access = { userIsAdmin, userIsUsers, everyone };
+const access = { userIsAdmin, userIsUsers, everyone, userIsSales, userIsExecutor, userIsPlanner };
 
 module.exports = { "access": access }

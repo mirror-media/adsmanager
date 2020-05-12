@@ -39,7 +39,7 @@ keystone.createList('User', {
       type: Text,
       isUnique: true,
     },
-    role: { type: Select, options: 'users, guest' },
+    role: { type: Select, options: 'user, admin, sales, executor, planner' },
     isAdmin: { type: Checkbox },
     password: {
       type: Password,
@@ -152,6 +152,13 @@ keystone.createList('Commission', {
 		price: { label: "售價", type: Integer, isRequired: true },
 		charged: { label: "實收金額", type: Integer, isRequired: true },
 		remark: { label: "備註", type: Text },
+	},
+	access: {
+		read: access.userIsPlanner,
+		update: access.userIsExecutor,
+		create: access.userIsExecutor,
+		delete: access.userIsAdmin,
+		auth: true,
 	},
     plugins: [
 	  atTracking({

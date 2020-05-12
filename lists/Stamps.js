@@ -47,7 +47,7 @@ module.exports = {
     stamp_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
   },
   access: {
-    read: access.UserIsPlanner,
+    read: access.userIsPlanner,
     update: access.userIsAdmin,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,

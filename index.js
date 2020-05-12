@@ -80,7 +80,7 @@ module.exports = {
 const ClientsSchema = require('./lists/Clients.js');
 const OrdersSchema = require('./lists/Orders.js');
 const StampsSchema = require('./lists/Stamps.js');
-const CommissionSchema = require('./lists/Commission.js');
+//const CommissionSchema = require('./lists/Commission.js');
 const DailystampSchema = require('./lists/DailyStamp.js');
 keystone.createList('Client', ClientsSchema);
 keystone.createList('Order', OrdersSchema);

@@ -38,6 +38,7 @@ module.exports = {
     //category: { label: "頻道分類", type: Text, isRequired: true},
     stamp: { label: "版位", type: Text, isRequired: true},
     adname: { label: "廣告名稱", type: Text, isRequired: true},
+    gam_id: { label: "GAM ID", type: Text, isRequired: true},
     spec: { label: "素材尺寸規格", type: Text, isRequired: true},
     charge: { label: "計價方式", type: Text, isRequired: true},
 	estimate: {label: "預估曝光量", type: Integer, isRequired: false},

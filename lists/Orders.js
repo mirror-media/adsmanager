@@ -34,7 +34,7 @@ module.exports = {
 				}
 			}
 		}
-	}
+	},
     tax_included: { label: "總金額（含稅）", type: Integer, isRequired: false},
     adname: { label: "付款條件", type: Text, isRequired: false},
     remark: { label: "其他備註", type: Text, isRequired: false},

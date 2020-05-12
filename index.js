@@ -6,7 +6,7 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { atTracking } = require('@keystonejs/list-plugins');
 const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
-const { access } = require('./Permission.js');
+const { access } = require('lists/Permission.js');
 const PROJECT_NAME = "sales";
 const keystone = new Keystone({
   name: PROJECT_NAME,

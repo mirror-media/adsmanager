@@ -10,6 +10,7 @@ module.exports = {
 	estimate: {label: "預估曝光量", type: Integer, isRequired: false},
 	impression: { label: "手動曝光量", type: Integer, isRequired: false },
 	remaining: { label: "剩餘曝光量", type: Integer, isRequired: false },
+	real_impression: { label: "實際曝光數", type: Integer, isRequired: false },
   },
   access: {
     read: access.everyone,

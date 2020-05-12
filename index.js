@@ -6,26 +6,20 @@ const { AdminUIApp } = require('@keystonejs/app-admin-ui');
 const { atTracking } = require('@keystonejs/list-plugins');
 const initialiseData = require('./initial-data');
 const { MongooseAdapter: Adapter } = require('@keystonejs/adapter-mongoose');
-const { access } = require('lists/Permission.js');
+const { access } = require('./lists/Permission.js');
 const PROJECT_NAME = "sales";
 const keystone = new Keystone({
   name: PROJECT_NAME,
   adapter: new Adapter(),
   onConnect: initialiseData,
 });
-// Access control functions
-const userIsAdmin = ({ authentication: { item: user } }) => Boolean(user && user.isAdmin);
-const userOwnsItem = ({ authentication: { item: user } }) => {
-  if (!user) {
-    return false;
-  }
-  return { id: user.id };
-};
+/*
 const userIsAdminOrOwner = auth => {
   const isAdmin = access.userIsAdmin(auth);
   const isOwner = access.userOwnsItem(auth);
   return isAdmin ? isAdmin : isOwner;
 };
+*/
 const status_options = [
   { value: 'active', label: "active" },
   { value: 'inactive', label: "inactive" },
@@ -47,8 +41,8 @@ keystone.createList('User', {
     user_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
   },
   access: {
-    read: access.userIsAdminOrOwner,
-    update: access.userIsAdminOrOwner,
+    read: access.userIsAdmin,
+    update: access.userIsAdmin,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,
     auth: true,

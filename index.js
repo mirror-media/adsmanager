@@ -80,7 +80,7 @@ keystone.createList('Order', OrdersSchema);
 keystone.createList('Stamp', StampsSchema);
 keystone.createList('Dailystamp', DailystampSchema);
 //keystone.createList('Commission', CommissionSchema);
-keystone.createList('Commission', {
+keystone.createList('Z_Commission', {
 	fields: {
 		dailystamp: { label: "每日版位ID", type: Relationship, many: false, ref: 'Dailystamp',  isRequired: true},
 		order: {

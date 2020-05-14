@@ -33,8 +33,7 @@ keystone.createList('User', {
       type: Text,
       isUnique: true,
     },
-    role: { type: Select, options: 'user, admin, sales, executor, planner' },
-    isAdmin: { type: Checkbox },
+    role: { type: Select, options: 'admin, sales, executor, planner' },
     password: {
       type: Password,
     },

@@ -26,6 +26,8 @@ const status_options = [
 ];
 const everyone = ({ authentication: { item: user } }) => Boolean(user);
 keystone.createList('User', {
+  label: "使用者",
+  plural: "使用者",
   fields: {
     name: { label: "姓名", type: Text, isRequired: true },
     phone: { label: "電話", type: Text, isRequired: true },

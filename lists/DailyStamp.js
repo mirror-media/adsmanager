@@ -15,7 +15,7 @@ module.exports = {
 	real_impression: { label: "實際曝光數", type: Integer, isRequired: false },
   },
   access: {
-    read: access.everyone,
+    read: access.userIsAdmin,
     update: access.userIsAdmin,
     create: access.userIsAdmin,
     delete: access.userIsAdmin,

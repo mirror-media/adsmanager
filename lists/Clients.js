@@ -8,6 +8,8 @@ const status_options = [
 ];
 
 module.exports = { 
+  label: "客戶",
+  plural: "客戶",
   fields: {
     name: { label: "客戶名稱", type: Text, isRequired: true},
     resale: { label: "代理商名稱", type: Text, isRequired: true},

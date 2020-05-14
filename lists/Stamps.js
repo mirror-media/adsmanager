@@ -32,6 +32,8 @@ const section_options = [
   { value: 'other', label: "其他" },
 ];
 module.exports = { 
+  label: "版位",
+  plural: "版位",
   fields: {
     platform: { label: '平台', type: Select, options: platform_options, isRequired: true, default: '跨裝置廣告' },
     section: { label: '頻道分區', type: Select, options: section_options, isRequired: true, default: '不指定' },

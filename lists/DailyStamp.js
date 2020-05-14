@@ -3,6 +3,8 @@ const { Select, Text, Relationship, DateTime, Integer } = require('@keystonejs/f
 const { atTracking } = require('@keystonejs/list-plugins');
  
 module.exports = {
+  label: "版位庫存",
+  plural: "版位庫存",
   fields: {
     dailyid: { type: Text, isRequired: true },
     stampid: { label: "版位ID", type: Relationship, many: false, ref: 'Stamp',  isRequired: true},

@@ -13,6 +13,7 @@ const updateamount = async (_, { dailystamp, order }) => {
 };
 
 module.exports = {
+  plural: " ",
   fields: {
 	dailystamp: { label: "每日版位ID", type: Relationship, many: false, ref: 'Dailystamp',  isRequired: true},
     order: { 

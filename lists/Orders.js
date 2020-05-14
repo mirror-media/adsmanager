@@ -16,6 +16,8 @@ const status_options = [
 ];
 
 module.exports = {
+  label: "委刊單",
+  plural: "委刊單",
   fields: {
     adname: { label: "廣告名稱", type: Text, isRequired: true},
     clientname: { label: "客戶ID", type: Relationship, many: false, ref: 'Client',  isRequired: true},

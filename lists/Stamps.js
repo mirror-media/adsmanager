@@ -31,6 +31,13 @@ const section_options = [
   { value: 'watch', label: "汽車鐘錶" },
   { value: 'other', label: "其他" },
 ];
+
+const charge_options = [
+  { value: 'cpm', label: 'CPM' },
+  { value: 'single', label: '一則' },
+  { value: 'NA', label: 'N/A' },
+];
+
 module.exports = { 
   label: "版位",
   plural: "版位",
@@ -42,10 +49,10 @@ module.exports = {
     adname: { label: "廣告名稱", type: Text, isRequired: true},
     gam_id: { label: "GAM ID", type: Text, isRequired: true},
     spec: { label: "素材尺寸規格", type: Text, isRequired: true},
-    charge: { label: "計價方式", type: Text, isRequired: true},
-	estimate: {label: "預估曝光量", type: Integer, isRequired: false},
+    charge: { label: "計價方式", type: Select, options: charge_options, isRequired: true},
+    price: { label: "單價", type: Integer, isRequired: true},
+	//estimate: {label: "預估曝光量", type: Integer, isRequired: false},
 	est_ctr: {label: "預估點擊率", type: Float, isRequired: false},
-    price: { label: "售價金額", type: Integer, isRequired: true},
     stamp_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
   },
   access: {

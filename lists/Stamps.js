@@ -42,8 +42,8 @@ module.exports = {
   label: "版位",
   plural: "版位",
   fields: {
-    platform: { label: '平台', type: Select, options: platform_options, isRequired: true, default: '跨裝置廣告' },
-    section: { label: '頻道分區', type: Select, options: section_options, isRequired: true, default: '不指定' },
+    platform: { label: '平台', type: Relationship, many: true, ref: 'Platform', isRequired: true, default: '跨裝置廣告' },
+    section: { label: '頻道分區', type: Relationship, many:true, ref: 'Section', isRequired: true, default: '不指定' },
     //category: { label: "頻道分類", type: Text, isRequired: true},
     stamp: { label: "版位", type: Text, isRequired: true},
     adname: { label: "廣告名稱", type: Text, isRequired: true},

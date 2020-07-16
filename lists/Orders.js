@@ -9,8 +9,8 @@ const options = [
 
 const payment_options = [
   { value: 'cash', label: "出刊前付現" },
-  { value: '30', label: "月結30天" },
-  { value: '60', label: "月結60天" },
+  { value: 'd30', label: "月結30天" },
+  { value: 'd60', label: "月結60天" },
 ];
 const status_options = [
   { value: 'draft', label: "草稿" },

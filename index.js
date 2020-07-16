@@ -77,14 +77,24 @@ const OrdersSchema = require('./lists/Orders.js');
 const StampsSchema = require('./lists/Stamps.js');
 //const CommissionSchema = require('./lists/Commission.js');
 const DailystampSchema = require('./lists/DailyStamp.js');
+const PlatformSchema = require('./lists/Platform.js');
+const SectionSchema = require('./lists/Section.js');
 keystone.createList('Client', ClientsSchema);
 keystone.createList('Order', OrdersSchema);
 keystone.createList('Stamp', StampsSchema);
 keystone.createList('Dailystamp', DailystampSchema);
+keystone.createList('Platform', PlatformSchema);
+keystone.createList('Section', SectionSchema);
 //keystone.createList('Commission', CommissionSchema);
-keystone.createList('Z_Commission', {
+
+const status_options = [
+  { value: 'active', label: "active" },
+  { value: 'inactive', label: "inactive" },
+];
+keystone.createList('Commission', {
 	fields: {
 		dailystamp: { label: "每日版位ID", type: Relationship, many: false, ref: 'Dailystamp',  isRequired: true},
+    	commision_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
 		order: {
 			label: "預定量",
 			type: Integer,
@@ -147,6 +157,7 @@ keystone.createList('Z_Commission', {
 		price: { label: "售價", type: Integer, isRequired: true },
 		charged: { label: "實收金額", type: Integer, isRequired: true },
 		remark: { label: "備註", type: Text },
+		order: { label: "訂單", type: Relationship, ref: 'Order.id' },
 	},
 	access: {
 		read: access.userIsPlanner,

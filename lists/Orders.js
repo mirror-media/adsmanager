@@ -30,7 +30,7 @@ module.exports = {
     order_status: { label: '狀態', type: Select, options: status_options, isRequired: true, default: 'draft' },
     start_date: { label: "開始日", type: DateTime, yearRangeFrom: 2020, yearRangeTo: 2022, yearPickerType: 'select', isRequired: true},
     end_date: { label: "結束日", type: DateTime, yearRangeFrom: 2020, yearRangeTo: 2022, yearPickerType: 'select', isRequired: true},
-    commissions: { label: "委刊項", type: Relationship, many: true, ref: 'Z_Commission',  isRequired: true},
+    commissions: { label: "委刊項", type: Relationship, many: true, ref: 'Commission',  isRequired: true},
     tax_free: { 
 		label: "總金額（未稅）", type: Integer, isRequired: false,
 		hooks: {

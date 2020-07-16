@@ -20,6 +20,11 @@ const userIsAdminOrOwner = auth => {
   return isAdmin ? isAdmin : isOwner;
 };
 */
+const status_options = [
+  { value: 'active', label: "active" },
+  { value: 'inactive', label: "inactive" },
+];
+
 const everyone = ({ authentication: { item: user } }) => Boolean(user);
 keystone.createList('User', {
   label: "使用者",
@@ -83,10 +88,6 @@ keystone.createList('Platform', PlatformSchema);
 keystone.createList('Section', SectionSchema);
 //keystone.createList('Commission', CommissionSchema);
 
-const status_options = [
-  { value: 'active', label: "active" },
-  { value: 'inactive', label: "inactive" },
-];
 keystone.createList('Commission', {
 	fields: {
 		dailystamp: { label: "每日版位ID", type: Relationship, many: false, ref: 'Dailystamp',  isRequired: true},

@@ -154,7 +154,7 @@ keystone.createList('Commission', {
 		price: { label: "售價", type: Integer, isRequired: true },
 		charged: { label: "實收金額", type: Integer, isRequired: true },
 		remark: { label: "備註", type: Text },
-		order: { label: "訂單", type: Relationship, ref: 'Order.id' },
+		order: { label: "訂單", type: Relationship, ref: 'Order.adname' },
 	},
 	access: {
 		read: access.userIsPlanner,

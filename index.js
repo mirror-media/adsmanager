@@ -20,10 +20,6 @@ const userIsAdminOrOwner = auth => {
   return isAdmin ? isAdmin : isOwner;
 };
 */
-const status_options = [
-  { value: 'active', label: "active" },
-  { value: 'inactive', label: "inactive" },
-];
 const everyone = ({ authentication: { item: user } }) => Boolean(user);
 keystone.createList('User', {
   label: "使用者",

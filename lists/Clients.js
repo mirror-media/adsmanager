@@ -20,8 +20,8 @@ module.exports = {
     inv_method: { label: "發票開立方式", type: Text, isRequired: false},
     client_status: { label: "狀態", type: Select, options: status_options, isRequired: true},
     contact: { label: "聯絡人姓名", type: Text, isRequired: false },
-    contact_email: { label: "聯絡人 Email", type: Text, isRequired: true},
-    contact_tel: { label: "聯絡人電話", type: Text, isRequired: true},
+    contact_email: { label: "聯絡人 Email", type: Text, isRequired: false },
+    contact_tel: { label: "聯絡人電話", type: Text, isRequired: false },
   },
   access: {
     read: access.everyone,
